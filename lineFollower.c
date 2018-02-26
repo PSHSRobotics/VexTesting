@@ -48,22 +48,21 @@ task main()
     displayNextLCDNumber(SensorValue(lineFollowerRIGHT));   //  x  x  x   |
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -+
 		*/
-    // If one of the sensors see dark:
-    if(SensorValue(lineFollowerRIGHT) > threshold) || (SensorValue(lineFollowerCENTER) > threshold) || (SensorValue(lineFollowerLEFT) > threshold)
+		// White is around ~0 and dark is ~4000
+    // If one of the sensors see white:
+    if(SensorValue(lineFollowerRIGHT) > threshold || SensorValue(lineFollowerCENTER) > threshold || SensorValue(lineFollowerLEFT) > threshold)
     {
-      // counter-steer right:
-      motor[leftMotor]  = 0;
-      motor[rightMotor] = 0;
-    }
-    // No sensor sees dark:
-    else
-    {
-      // go straight
+    	//Sees dark then move
       motor[leftMotor]  = 50;
       motor[rightMotor] = 50;
     }
-
-
+    else if
+    else    // Sees white then stop:
+    {
+      // go straight
+      motor[leftMotor]  = 0;
+      motor[rightMotor] = 0;
+    }
   }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
