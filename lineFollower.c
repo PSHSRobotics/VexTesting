@@ -56,8 +56,29 @@ task main()
       motor[leftMotor]  = 50;
       motor[rightMotor] = 50;
     }
-    else if
-    else    // Sees white then stop:
+    else if(SensorValue(lineFollowerLEFT) < threshold || SensorValue(lineFollowerRIGHT) > threshold || SensorValue(lineFollowerCENTER) > threshold)
+    {
+    	// if white is seen by left sesor then left will move normal speed and the left motor will move at a slightly higher speed:)
+    	motor[leftMotor] = 50;
+    	motor[rightMotor] = 55;
+    }
+    else if(SensorValue(lineFollowerLEFT) > threshold || SensorValue(lineFollowerRIGHT) < threshold || SensorValue(lineFollowerCENTER) < threshold))
+  	{
+  		// If black is seen by left sensor and white is seen by the right sensor the move right motor move higher speed
+  		motor[leftMotor] = 60;
+  		motor[rightMotor] = 50;
+  	}
+    else if(SensorValue(lineFollowerLEFT) > threshold || SensorValue(lineFollowerRIGHT) < threshold || SensorValue(lineFollowerCENTER) < threshold))
+  	{
+  		// If black is seen by left sensor and white is seen by the right sensor the move right motor move higher speed
+  		motor[leftMotor] = 60;
+  		motor[rightMotor] = 50;
+  	}
+  	else if(SensorValue(lineFollowerLEFT) < threshold || SensorValue(lineFollowerRIGHT) > threshold || SensorValue(lineFollowerCENTER) < threshold)
+  		motor[leftMotor] = 50;
+  		motor[rightMotor] = 55;
+    else
+    	// Sees white then stop:
     {
       // go straight
       motor[leftMotor]  = 0;
@@ -66,3 +87,4 @@ task main()
   }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//Got EM COACH LLLLLOOOOOLLLLLLLL LMAO
