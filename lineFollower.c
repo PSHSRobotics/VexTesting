@@ -34,7 +34,7 @@ task main()
 {
   wait1Msec(2000);          // The program waits for 2000 milliseconds before continuing.
 
-  int threshold = 505;      /* found by taking a reading on both DARK and LIGHT    */
+  int threshold = 3000;      /* found by taking a reading on both DARK and LIGHT    */
                             /* surfaces, adding them together, then dividing by 2. */
   while(true)
   {
