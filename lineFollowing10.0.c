@@ -28,6 +28,28 @@
 |*    Analog - Port 3     lineFollowerLEFT    VEX Light Sensor      Front-left, facing down           *|
 \*-----------------------------------------------------------------------------------------------4246-*/
 
+bool getRDark(){
+	return SensorValue(lineFollowerRIGHT) > threshold
+}
+
+bool getCDark(){
+	return SensorValue(lineFollowerCENTER) > threshold;
+}
+
+bool getLDark(){
+	return SensorValue(lineFollowerLEFT) > threshold;
+}
+
+bool getRLight(){
+	return SensorValue(lineFollowerRIGHT) < threshold;
+}
+
+bool getCLight(){
+	return SensorValue(lineFollowerCENTER) < threshold;
+}
+bool getLLight(){
+	return SensorValue(lineFollowerLEFT) < threshold;
+}
 
 //+++++++++++++++++++++++++++++++++++++++++++++| MAIN |+++++++++++++++++++++++++++++++++++++++++++++++
 task main()
@@ -35,12 +57,12 @@ task main()
   wait1Msec(2000);          // The program waits for 2000 milliseconds before continuing.
 
   int threshold = 505;      /* found by taking a reading on both DARK and LIGHT    */
-  int RDark = (SensorValue(lineFollowerRIGHT) > threshold);
-  int CDark = (SensorValue(lineFollowerCENTER) > threshold);
-  int LDark = (SensorValue(lineFollowerLEFT) > threshold);
-  int RLight = (SensorValue(lineFollowerRIGHT) < threshold);
-  int CLight = (SensorValue(lineFollowerCENTER) < threshold);
-  int LLight = (SensorValue(lineFollowerLEFT) < threshold);
+  //int RDark = (SensorValue(lineFollowerRIGHT) > threshold);
+  //int CDark = (SensorValue(lineFollowerCENTER) > threshold);
+  //int LDark = (SensorValue(lineFollowerLEFT) > threshold);
+  //int RLight = (SensorValue(lineFollowerRIGHT) < threshold);
+  //int CLight = (SensorValue(lineFollowerCENTER) < threshold);
+  //int LLight = (SensorValue(lineFollowerLEFT) < threshold);
   /* surfaces, adding them together, then dividing by 2. */
   while(true)
   {
@@ -59,23 +81,31 @@ task main()
     {
 
     }
-
   ///DARK DARK LIGHT
     else if(LDark && CDark && RLight)
     {
 
     }
-
     ///LIGHT DARK DARK
     else if(LLight && CDark && RDark)
     {
 
     }
-    else if(LDark && CLight && RDark){}
-		else if(LDark && CLight && RLight){}
-		else if(LLight && CLight && RDark){}
-		else if(LLight && CDark && RLight){}
-		else{}
+    else if(LDark && CLight && RDark){
+    	
+    }
+		else if(LDark && CLight && RLight){
+			
+		}
+		else if(LLight && CLight && RDark){
+			
+		}
+		else if(LLight && CDark && RLight){
+			
+		}
+		else{
+			
+		}
   }
 }
 
